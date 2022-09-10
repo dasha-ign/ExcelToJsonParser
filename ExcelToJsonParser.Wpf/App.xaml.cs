@@ -1,4 +1,5 @@
-﻿using ExcelToJsonParser.Wpf.ViewModels;
+﻿using ExcelToJsonParser.Wpf.Services;
+using ExcelToJsonParser.Wpf.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -17,7 +18,7 @@ namespace ExcelToJsonParser.Wpf
         protected override void OnStartup(StartupEventArgs e)
         {
             MainWindow = new MainWindow();
-            MainWindow.DataContext = new MainViewModel();
+            MainWindow.DataContext = new MainViewModel(new ExcelFileService());
             MainWindow.Show();
 
             base.OnStartup(e);
