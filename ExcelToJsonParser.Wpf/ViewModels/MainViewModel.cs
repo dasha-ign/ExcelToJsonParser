@@ -55,7 +55,7 @@ namespace ExcelToJsonParser.Wpf.ViewModels
             {
                 if (Set(ref _DragItems, value))
                 {
-                    _DragItemViewSource = new()
+                    _DragItemViewSource = new CollectionViewSource()
                     {
                         Source = value,
                         SortDescriptions =
@@ -73,6 +73,16 @@ namespace ExcelToJsonParser.Wpf.ViewModels
 
         #endregion
 
+
+        #region SelectedDragItem : DragItem - selected item to drag somewhere
+
+        ///<summary>selected item to drag somewhere</summary>
+        private DragItem _SelectedDragItem;
+
+        ///<summary>selected item to drag somewhere</summary>
+        public DragItem SelectedDragItem { get => _SelectedDragItem; set => Set(ref _SelectedDragItem, value); }
+
+        #endregion
 
 
         #region Students : ObservableCollection<Student> - list of students
@@ -108,6 +118,17 @@ namespace ExcelToJsonParser.Wpf.ViewModels
         #endregion
 
 
+        #region SelectedStudent : Student - selected student
+
+        ///<summary>selected student</summary>
+        private Student _SelectedStudent;
+
+        ///<summary>selected student</summary>
+        public Student SelectedStudent { get => _SelectedStudent; set => Set(ref _SelectedStudent, value); }
+
+        #endregion
+
+
         #endregion
 
         #region view model commands
@@ -129,6 +150,7 @@ namespace ExcelToJsonParser.Wpf.ViewModels
         {
             Students = await _excelFileService.CreateStudents();
             DragItems = await _excelFileService.CreateDragItems();
+            OnPropertyChanged(nameof(DragItems));
             StudentsView?.Refresh();
             DragItemsView?.Refresh();
         }

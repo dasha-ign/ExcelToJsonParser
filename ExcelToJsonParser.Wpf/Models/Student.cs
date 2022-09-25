@@ -8,7 +8,7 @@ namespace ExcelToJsonParser.Wpf.Models
 {
     internal class Student
     {
-        public string? FirstName { get; set; }
+        public string?  FirstName { get; set; }
         public string? LastName { get; set; }
         public DateOnly BirthDate { get; set; }
         public string? Group { get; set; }

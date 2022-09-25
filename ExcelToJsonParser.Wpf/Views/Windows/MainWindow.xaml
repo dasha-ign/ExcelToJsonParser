@@ -26,7 +26,8 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <ListBox Grid.Column="0" Margin="10 0"
-                     ItemsSource="{Binding DragItems}"
+                     ItemsSource="{Binding DragItems, UpdateSourceTrigger=PropertyChanged}"
+                     SelectedItem="{Binding SelectedDragItem}"
                      AllowDrop="True">
                 <ListBox.ItemTemplate>
                     <DataTemplate DataType="{x:Type ListBoxItem}">
@@ -38,8 +39,15 @@
             </ListBox>
             <DataGrid Grid.Column="1" ColumnWidth="*" Margin="10"
                 ItemsSource="{Binding Students}" 
+                SelectedItem="{Binding SelectedStudent}"
+                      SelectionUnit="Cell"
                 AutoGenerateColumns="True" 
-                AllowDrop="True"/>
+                AllowDrop="True">
+                <i:Interaction.Behaviors>
+                    <i:MouseDragElementBehavior >
+                    </i:MouseDragElementBehavior>
+                </i:Interaction.Behaviors>
+            </DataGrid>
         </Grid>
         
     </Grid>
