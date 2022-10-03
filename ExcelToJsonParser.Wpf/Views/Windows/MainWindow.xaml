@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:fa="http://schemas.fontawesome.com/icons/"
-        xmlns:local="clr-namespace:ExcelToJsonParser.Wpf"
+        xmlns:behaviors="clr-namespace:ExcelToJsonParser.Wpf.Behaviors"
+        xmlns:local="clr-namespace:ExcelToJsonParser.Wpf" 
+        xmlns:viewmodels="clr-namespace:ExcelToJsonParser.Wpf.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <i:Interaction.Triggers>
@@ -13,6 +15,9 @@
             <i:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
+    <i:Interaction.Behaviors>
+        <behaviors:DropData DropDataCommand="{Binding LoadDataCommand}"/>
+    </i:Interaction.Behaviors>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>

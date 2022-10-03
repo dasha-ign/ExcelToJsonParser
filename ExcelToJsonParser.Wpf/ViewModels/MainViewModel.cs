@@ -157,6 +157,26 @@ namespace ExcelToJsonParser.Wpf.ViewModels
 
         #endregion
 
+        #region Command _RenameColumnCommand - renames column header at drop
+
+        /// <summary>renames column header at drop</summary>
+        private ICommand _RenameColumnCommand;
+
+        /// <summary>renames column header at drop</summary>
+        public ICommand RenameColumnCommand => _RenameColumnCommand
+            ??= new LambdaCommandAsync(OnRenameColumnCommandExecuted, CanRenameColumnCommandExecute);
+
+        /// <summary>Проверка возможности выполнения - renames column header at drop</summary>
+        private bool CanRenameColumnCommandExecute() => true;
+
+        /// <summary>Логика выполнения - renames column header at drop</summary>
+        private async Task OnRenameColumnCommandExecuted()
+        {
+
+        }
+
+        #endregion
+
         #endregion
 
 
