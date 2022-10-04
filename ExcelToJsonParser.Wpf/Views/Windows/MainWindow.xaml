@@ -7,7 +7,8 @@
         xmlns:fa="http://schemas.fontawesome.com/icons/"
         xmlns:behaviors="clr-namespace:ExcelToJsonParser.Wpf.Behaviors"
         xmlns:local="clr-namespace:ExcelToJsonParser.Wpf" 
-        xmlns:viewmodels="clr-namespace:ExcelToJsonParser.Wpf.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
+        xmlns:viewmodels="clr-namespace:ExcelToJsonParser.Wpf.ViewModels" 
+        d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <i:Interaction.Triggers>
@@ -22,6 +23,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="{Binding Title}" FontSize="20" FontWeight="Medium"
                    Margin="10"/>
@@ -54,6 +56,16 @@
                 </i:Interaction.Behaviors>
             </DataGrid>
         </Grid>
-        
+        <ComboBox Grid.Row="2" ItemsSource="{Binding DragItems}"
+                  DisplayMemberPath="Caption"
+                  StaysOpenOnEdit="True"
+                  Margin="20"   
+                  IsEditable="True"
+                  >
+            <i:Interaction.Behaviors>
+                <behaviors:FilterComboBoxBehavior/>
+            </i:Interaction.Behaviors>
+        </ComboBox>
+
     </Grid>
 </Window>
