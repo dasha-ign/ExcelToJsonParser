@@ -51,8 +51,10 @@
                 AutoGenerateColumns="True" 
                 AllowDrop="True">
                 <i:Interaction.Behaviors>
-                    <i:MouseDragElementBehavior >
-                    </i:MouseDragElementBehavior>
+                    <behaviors:TraceColumnBehavior ColumnIndex="{Binding CurrentColumn}"/>
+                    <behaviors:DropData 
+                        DataFormat="{x:Static DataFormats.FileDrop}"
+                        DropDataCommand="{Binding ShowMessageCommand}"/>
                 </i:Interaction.Behaviors>
             </DataGrid>
         </Grid>

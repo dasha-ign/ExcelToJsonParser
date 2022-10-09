@@ -28,7 +28,7 @@ namespace ExcelToJsonParser.Wpf.Behaviors
                 if (String.IsNullOrEmpty(combobox.Text)) return true;
                 else
                 {
-                    return o.ToString().Contains(combobox.Text);
+                    return o.ToString().IndexOf(combobox.Text,StringComparison.OrdinalIgnoreCase) <0;
                 }
             });
 

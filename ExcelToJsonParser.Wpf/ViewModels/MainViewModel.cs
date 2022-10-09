@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 
@@ -129,6 +130,18 @@ namespace ExcelToJsonParser.Wpf.ViewModels
         #endregion
 
 
+
+        #region ColumnIndex : int? - index of the column mouse is over
+
+        ///<summary>index of the column mouse is over</summary>
+        private int? _ColumnIndex;
+
+        ///<summary>index of the column mouse is over</summary>
+        public int? ColumnIndex { get => _ColumnIndex; set => Set(ref _ColumnIndex, value); }
+
+        #endregion
+
+
         #endregion
 
         #region view model commands
@@ -173,6 +186,28 @@ namespace ExcelToJsonParser.Wpf.ViewModels
         private async Task OnRenameColumnCommandExecuted()
         {
 
+        }
+
+        #endregion
+
+        #region Command _ShowMessageCommand - displays dropped data
+
+        /// <summary>displays dropped data</summary>
+        private ICommand _ShowMessageCommand;
+
+        /// <summary>displays dropped data</summary>
+        public ICommand ShowMessageCommand => _ShowMessageCommand
+            ??= new LambdaCommandAsync<string[]>(OnShowMessageCommandExecuted, CanShowMessageCommandExecute);
+
+        /// <summary>Проверка возможности выполнения - displays dropped data</summary>
+        private bool CanShowMessageCommandExecute(string[] message) => true;
+
+        /// <summary>Логика выполнения - displays dropped data</summary>
+        private async Task OnShowMessageCommandExecuted(string[] message)
+        {
+            
+            MessageBox.Show($"{message[0]}");
+            MessageBox.Show($"Column: {ColumnIndex}");
         }
 
         #endregion
